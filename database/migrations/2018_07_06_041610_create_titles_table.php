@@ -13,7 +13,7 @@ class CreateTitlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('titles', function (Blueprint $table) {
+        Schema::connection('product')->create('titles', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('title_id')->unique();
             $table->unsignedInteger('series_id')->index();
@@ -36,6 +36,6 @@ class CreateTitlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('titles');
+        Schema::connection('product')->dropIfExists('titles');
     }
 }

@@ -13,7 +13,7 @@ class CreateSeriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('series', function (Blueprint $table) {
+        Schema::connection('product')->create('series', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('series_id')->unique();
             $table->unsignedInteger('author_id')->index();
@@ -37,6 +37,6 @@ class CreateSeriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('series');
+        Schema::connection('product')->dropIfExists('series');
     }
 }

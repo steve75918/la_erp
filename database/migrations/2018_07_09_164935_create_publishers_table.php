@@ -13,7 +13,7 @@ class CreatePublishersTable extends Migration
      */
     public function up()
     {
-        Schema::create('publishers', function (Blueprint $table) {
+        Schema::connection('product')->create('publishers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);
             $table->string('origin_name', 255);
@@ -28,6 +28,6 @@ class CreatePublishersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('publishers');
+        Schema::connection('product')->dropIfExists('publishers');
     }
 }

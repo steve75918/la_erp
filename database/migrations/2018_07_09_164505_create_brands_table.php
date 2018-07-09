@@ -13,7 +13,7 @@ class CreateBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::connection('product')->create('brands', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('publisher_id')->index();
             $table->string('name', 255);
@@ -29,6 +29,6 @@ class CreateBrandsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        Schema::connection('product')->dropIfExists('brands');
     }
 }
