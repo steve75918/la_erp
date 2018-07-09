@@ -15,9 +15,9 @@ class CreateSeriesTable extends Migration
     {
         Schema::create('series', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('series')->unique();
-            $table->unsignedInteger('author')->index();
-            $table->unsignedInteger('brand')->index();
+            $table->unsignedInteger('series_id')->unique();
+            $table->unsignedInteger('author_id')->index();
+            $table->unsignedInteger('brand_id')->index();
             $table->string('name', 255);
             $table->string('origin_name', 255);
             $table->text('desc');
