@@ -19,4 +19,10 @@ class Series extends Model
     {
         return $this->belongsTo('App\Product\Brand');
     }
+
+    /* N:1 */
+    public function author()
+    {
+        return $this->belongsTo('App\Product\Author');
+    }
 }
