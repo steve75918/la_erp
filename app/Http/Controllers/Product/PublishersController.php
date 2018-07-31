@@ -76,7 +76,14 @@ class PublishersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $publisher = Publisher::find($id);
+
+        $publisher->name = $request->name;
+        $publisher->origin_name = $request->origin_name;
+
+        $publisher->save();
+
+        return redirect()->route('publishers.index');
     }
 
     /**

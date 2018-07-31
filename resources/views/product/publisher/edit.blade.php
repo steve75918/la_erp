@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-          <form method="POST" action="publisher/{{ $publisher->id }}">
+          <form method="POST" action="/product/publishers/{{ $publisher->id }}">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
             <input type="text" name="name" value="{{ $publisher->name }}">
