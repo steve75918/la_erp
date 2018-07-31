@@ -12,6 +12,9 @@ class PublishersTableSeeder extends Seeder
     public function run()
     {
         $publishers = factory(App\Product\Publisher::class, 5)
-                        ->create();
+                        ->create()
+                        ->each(function ($p) {
+                            $p->brands()->save(factory(App\Product\Brand::class)->make());
+                        });
     }
 }
