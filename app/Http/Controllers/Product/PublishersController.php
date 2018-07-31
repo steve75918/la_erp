@@ -61,7 +61,10 @@ class PublishersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $publisher = Publisher::find($id);
+        $data = compact('publisher');
+
+        return view('product.publisher.edit', $data);
     }
 
     /**
