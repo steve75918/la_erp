@@ -14,6 +14,7 @@
                 <tr>
                   <th>中文名稱</th>
                   <th>日文名稱</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -21,6 +22,7 @@
                   <tr>
                     <td>{{ $publisher->name }}</td>
                     <td>{{ $publisher->origin_name }}</td>
+                    <td><a href="publishers/{{ $publisher->id }}/edit">修改</a></td>
                   </tr>
                 @endforeach
               </tbody>

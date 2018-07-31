@@ -10,7 +10,6 @@
           <form method="POST" action="publisher/{{ $publisher->id }}">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
-            <input type="hidden" name="id" valud="{{ $publisher->id }}">
             <input type="text" name="name" value="{{ $publisher->name }}">
             <input type="text" name="origin_name" value="{{ $publisher->origin_name }}">
             <input type="submit">
