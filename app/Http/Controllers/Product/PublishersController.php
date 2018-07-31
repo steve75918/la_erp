@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product\Publisher;
 
 class PublishersController extends Controller
 {
@@ -14,7 +15,10 @@ class PublishersController extends Controller
      */
     public function index()
     {
-        return view('product.publisher.index');
+        $publishers = Publisher::paginate(15);
+        $data = compact('publishers');
+
+        return view('product.publisher.index', $data);
     }
 
     /**
