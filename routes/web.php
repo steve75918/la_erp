@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/product', function () {
-    return view('product.index');
+Route::prefix('product')->group(function () {
+    Route::get('', function () {
+        return view('product.index');
+    });
+
+    Route::resource('publishers', 'Product\PublishersController');
 });
