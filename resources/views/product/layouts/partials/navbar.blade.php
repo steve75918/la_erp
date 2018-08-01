@@ -2,7 +2,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="publishers">
+                <a class="nav-link active" href="{{ route('publishers.index') }}">
                   <span data-feather="home"></span>
                   出版社管理 <span class="sr-only">(current)</span>
                 </a>

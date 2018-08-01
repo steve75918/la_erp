@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-          <form method="POST" action="/product/publishers">
+          <form method="POST" action="{{ route('publishers.store') }}">
             {{ csrf_field() }}
             <input type="text" name="name" value="">
             <input type="text" name="origin_name" value="">

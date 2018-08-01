@@ -11,7 +11,7 @@
             <h2>出版社清單</h2>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
-                <a class="btn btn-sm btn-outline-secondary" href="publishers/create">新增</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{{ route('publishers.create') }}">新增</a>
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@
                   <tr>
                     <td>{{ $publisher->name }}</td>
                     <td>{{ $publisher->origin_name }}</td>
-                    <td><a href="publishers/{{ $publisher->id }}/edit">修改</a></td>
+                    <td><a href="{{ route('publishers.edit', $publisher->id) }}">修改</a></td>
                   </tr>
                 @endforeach
               </tbody>
