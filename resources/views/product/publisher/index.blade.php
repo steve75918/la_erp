@@ -31,6 +31,13 @@
                     <td>{{ $publisher->name }}</td>
                     <td>{{ $publisher->origin_name }}</td>
                     <td><a href="{{ route('publishers.edit', $publisher->id) }}">修改</a></td>
+                    <td>
+                      <form action="{{ route('publishers.destroy', $publisher->id) }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <input type="submit" value="刪除">
+                      </form>
+                    </td>
                   </tr>
                 @endforeach
               </tbody>
