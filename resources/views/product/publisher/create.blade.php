@@ -1,6 +1,6 @@
 @extends('product.layouts.master')
 
-@section('title', '出版社管理 - 編輯')
+@section('title', '出版社管理 - 新增')
 
 @section('sidebar')
   @parent
