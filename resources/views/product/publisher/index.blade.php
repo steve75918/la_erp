@@ -7,7 +7,15 @@
 @endsection
 
 @section('content')
-          <h2>出版社清單</h2>
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            <h2>出版社清單</h2>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <a class="btn btn-sm btn-outline-secondary" href="publishers/create">新增</a>
+              </div>
+            </div>
+          </div>
+
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>

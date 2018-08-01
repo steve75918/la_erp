@@ -8,6 +8,8 @@ class Publisher extends Model
 {
     protected $connection = 'product';
 
+    protected $fillable = ['name', 'origin_name'];
+
     public function brands()
     {
         return $this->hasMany('App\Product\Brand');

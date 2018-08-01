@@ -28,7 +28,7 @@ class PublishersController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.publisher.create');
     }
 
     /**
@@ -39,7 +39,11 @@ class PublishersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $publisher = Publisher::updateOrCreate(
+            ['name' => $request->name, 'origin_name' => $request->origin_name]
+        );
+
+        return redirect()->route('publishers.index');
     }
 
     /**
