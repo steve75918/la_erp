@@ -3,9 +3,12 @@
 namespace App\Product;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Series extends Model
 {
+    use SoftDeletes;
+
     protected $connection = 'product';
 
     /* 1:N */
