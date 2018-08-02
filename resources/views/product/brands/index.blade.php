@@ -1,6 +1,6 @@
 @extends('product.layouts.master')
 
-@section('title', '出版社管理 - 首頁')
+@section('title', '發行商管理 - 首頁')
 
 @section('sidebar')
   @parent
@@ -8,7 +8,7 @@
 
 @section('content')
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-            <h2>出版社清單</h2>
+            <h2>發行商清單</h2>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <a class="btn btn-sm btn-outline-secondary" href="{{ route('brands.create') }}">新增</a>
