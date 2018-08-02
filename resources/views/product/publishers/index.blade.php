@@ -35,7 +35,7 @@
                       <form action="{{ route('publishers.destroy', $publisher->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button class="btn btn-primary btn-sm" type="submit">刪除</button>
+                        <button class="btn btn-danger btn-sm" type="submit">刪除</button>
                       </form>
                     </td>
                   </tr>

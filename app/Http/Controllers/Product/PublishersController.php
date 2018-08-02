@@ -18,7 +18,7 @@ class PublishersController extends Controller
         $publishers = Publisher::paginate(15);
         $data = compact('publishers');
 
-        return view('product.publisher.index', $data);
+        return view('product.publishers.index', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class PublishersController extends Controller
      */
     public function create()
     {
-        return view('product.publisher.create');
+        return view('product.publishers.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class PublishersController extends Controller
         $publisher = Publisher::find($id);
         $data = compact('publisher');
 
-        return view('product.publisher.edit', $data);
+        return view('product.publishers.edit', $data);
     }
 
     /**
