@@ -18,6 +18,15 @@
               <input type="text" class="form-control" name="origin_name" id="origin_name" placeholder="輸入原文名稱">
             </div>
 
+            <div class="form-group">
+              <label for="publisher_id">出版社</label>
+              <select class="form-control" name="publisher_id" id="publisher_id">
+                @foreach ($publishers as $publisher)
+                  <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                @endforeach
+              </select>
+            </div>
+
             {{ csrf_field() }}
             <button class="btn btn-primary" type="submit">送出</button>
           </form>
