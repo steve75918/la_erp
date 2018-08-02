@@ -30,12 +30,13 @@
                   <tr>
                     <td>{{ $brand->name }}</td>
                     <td>{{ $brand->origin_name }}</td>
+                    <td>{{ $brand->publisher->name }}</td>
                     <td><a class="btn btn-primary btn-sm" href="{{ route('brands.edit', $brand->id) }}">修改</a></td>
                     <td>
                       <form action="{{ route('brands.destroy', $brand->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button class="btn btn-primary btn-sm" type="submit">刪除</button>
+                        <button class="btn btn-danger btn-sm" type="submit">刪除</button>
                       </form>
                     </td>
                   </tr>

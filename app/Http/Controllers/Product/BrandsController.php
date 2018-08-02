@@ -4,6 +4,7 @@ namespace App\Http\Controllers\product;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product\Publisher;
 use App\Product\Brand;
 
 class BrandsController extends Controller
@@ -28,7 +29,10 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        return view('product.brands.create');
+        $publishers = Publisher::all();
+        $data = compact('publishers');
+
+        return view('product.brands.create', $data);
     }
 
     /**
@@ -41,7 +45,7 @@ class BrandsController extends Controller
     {
         $brand = brand::updateOrCreate(
             ['name' => $request->name],
-            ['origin_name' => $request->origin_name]
+            ['origin_name' => $request->origin_name, 'publisher_id' => $request->publisher_id]
         );
 
         return redirect()->route('brands.index');
@@ -85,6 +89,7 @@ class BrandsController extends Controller
 
         $brand->name = $request->name;
         $brand->origin_name = $request->origin_name;
+        $brand->publisher_id = $request->publisher_id;
 
         $brand->save();
 
