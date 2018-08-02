@@ -21,6 +21,7 @@
             <div class="form-group">
               <label for="publisher_id">出版社</label>
               <select class="form-control" name="publisher_id" id="publisher_id">
+                <option value="" selected disabled hidden>請選擇出版社</option>
                 @foreach ($publishers as $publisher)
                   <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
                 @endforeach

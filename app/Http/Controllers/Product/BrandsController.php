@@ -71,7 +71,9 @@ class BrandsController extends Controller
     public function edit($id)
     {
         $brand = brand::find($id);
-        $data = compact('brand');
+        $publishers = Publisher::all();
+
+        $data = compact('brand', 'publishers');
 
         return view('product.brands.edit', $data);
     }
