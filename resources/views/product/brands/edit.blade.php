@@ -7,15 +7,15 @@
 @endsection
 
 @section('content')
-          <form method="POST" action="{{ route('publishers.update', $publisher->id) }}">
+          <form method="POST" action="{{ route('brands.update', $brand->id) }}">
             <div class="form-group">
               <label for="name">中文名稱</label>
-              <input type="text" class="form-control" name="name" id="name" value="{{ $publisher->name }}">
+              <input type="text" class="form-control" name="name" id="name" value="{{ $brand->name }}">
             </div>
 
             <div class="form-group">
               <label for="origin_name">原文名稱</label>
-              <input type="text" class="form-control" name="origin_name" id="origin_name" value="{{ $publisher->origin_name }}">
+              <input type="text" class="form-control" name="origin_name" id="origin_name" value="{{ $brand->origin_name }}">
             </div>
 
             {{ csrf_field() }}

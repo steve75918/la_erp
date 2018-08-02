@@ -11,7 +11,7 @@
             <h2>出版社清單</h2>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
-                <a class="btn btn-sm btn-outline-secondary" href="{{ route('publishers.create') }}">新增</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{{ route('brands.create') }}">新增</a>
               </div>
             </div>
           </div>
@@ -26,13 +26,13 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($publishers as $publisher)
+                @foreach ($brands as $brand)
                   <tr>
-                    <td>{{ $publisher->name }}</td>
-                    <td>{{ $publisher->origin_name }}</td>
-                    <td><a class="btn btn-primary btn-sm" href="{{ route('publishers.edit', $publisher->id) }}">修改</a></td>
+                    <td>{{ $brand->name }}</td>
+                    <td>{{ $brand->origin_name }}</td>
+                    <td><a class="btn btn-primary btn-sm" href="{{ route('brands.edit', $brand->id) }}">修改</a></td>
                     <td>
-                      <form action="{{ route('publishers.destroy', $publisher->id) }}" method="POST">
+                      <form action="{{ route('brands.destroy', $brand->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button class="btn btn-primary btn-sm" type="submit">刪除</button>
@@ -43,6 +43,6 @@
               </tbody>
             </table>
 
-            {{ $publishers->links() }}
+            {{ $brands->links() }}
           </div>
 @endsection

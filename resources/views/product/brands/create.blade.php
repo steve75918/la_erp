@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-          <form method="POST" action="{{ route('publishers.store') }}">
+          <form method="POST" action="{{ route('brands.store') }}">
             <div class="form-group">
               <label for="name">中文名稱</label>
               <input type="text" class="form-control" name="name" id="name" placeholder="輸入中文名稱">
