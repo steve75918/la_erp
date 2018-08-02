@@ -4,6 +4,7 @@ namespace App\Http\Controllers\product;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product\Brand;
 
 class BrandsController extends Controller
 {
@@ -14,7 +15,10 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::paginate(15);
+        $data = compact('brands');
+
+        return view('product.brands.index', $data);
     }
 
     /**
@@ -24,7 +28,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.brands.create');
     }
 
     /**
@@ -35,7 +39,12 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $brand = brand::updateOrCreate(
+            ['name' => $request->name],
+            ['origin_name' => $request->origin_name]
+        );
+
+        return redirect()->route('brands.index');
     }
 
     /**
@@ -57,7 +66,10 @@ class BrandsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = brand::find($id);
+        $data = compact('brand');
+
+        return view('product.brands.edit', $data);
     }
 
     /**
@@ -69,7 +81,14 @@ class BrandsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $brand = brand::find($id);
+
+        $brand->name = $request->name;
+        $brand->origin_name = $request->origin_name;
+
+        $brand->save();
+
+        return redirect()->route('brands.index');
     }
 
     /**
@@ -80,6 +99,9 @@ class BrandsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $brand = brand::find($id);
+        $brand->delete();
+
+        return redirect()->route('brands.index');
     }
 }
