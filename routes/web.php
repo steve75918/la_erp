@@ -22,4 +22,5 @@ Route::prefix('product')->group(function () {
 
     Route::resource('publishers', 'Product\PublishersController');
     Route::resource('brands', 'Product\BrandsController');
+    Route::resource('authors', 'Product\AuthorsController');
 });
