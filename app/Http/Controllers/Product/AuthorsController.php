@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Product\Author;
 
 class AuthorsController extends Controller
 {
@@ -13,7 +15,10 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::paginate(15);
+        $data = compact('authors');
+
+        return view('product.authors.index', $data);
     }
 
     /**
@@ -23,7 +28,7 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.authors.create');
     }
 
     /**
@@ -34,7 +39,12 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $publisher = Author::updateOrCreate(
+            ['name' => $request->name],
+            ['origin_name' => $request->origin_name]
+        );
+
+        return redirect()->route('authors.index');
     }
 
     /**

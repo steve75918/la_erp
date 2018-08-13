@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Author extends Model
 {
     use SoftDeletes;
+    protected $guarded = [];
 
     protected $connection = 'product';
 

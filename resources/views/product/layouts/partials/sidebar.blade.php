@@ -11,6 +11,11 @@
                   發行商管理
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('authors.index') }}">
+                  作者管理
+                </a>
+              </li>
               {{-- <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="file"></span>
