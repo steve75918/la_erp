@@ -10,6 +10,7 @@ class Series extends Model
     use SoftDeletes;
 
     protected $connection = 'product';
+    protected $guarded = [];
 
     /* 1:N */
     public function titles()
