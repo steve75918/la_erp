@@ -66,7 +66,10 @@ class AuthorsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $author = Author::find($id);
+        $data = compact('author');
+
+        return view('product.authors.edit', $data);
     }
 
     /**
@@ -78,7 +81,14 @@ class AuthorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $author = Author::find($id);
+
+        $author->name = $request->name;
+        $author->origin_name = $request->origin_name;
+
+        $author->save();
+
+        return redirect()->route('authors.index');
     }
 
     /**
