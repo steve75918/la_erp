@@ -28,4 +28,10 @@ class Series extends Model
     {
         return $this->belongsTo('App\Product\Author');
     }
+
+    /* N:1 */
+    public function type()
+    {
+        return $this->belongsTo('App\Product\Type');
+    }
 }
