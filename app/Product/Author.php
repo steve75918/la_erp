@@ -12,9 +12,9 @@ class Author extends Model
 
     protected $connection = 'product';
 
-    /* 1:N */
+    /* N:M */
     public function series()
     {
-        return $this->hasMany('App\Product\Series');
+        return $this->belongsToMany('App\Product\Series');
     }
 }

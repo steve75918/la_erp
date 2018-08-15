@@ -25,15 +25,15 @@ class Series extends Model
     }
 
     /* N:1 */
-    public function author()
-    {
-        return $this->belongsTo('App\Product\Author');
-    }
-
-    /* N:1 */
     public function type()
     {
         return $this->belongsTo('App\Product\Type');
+    }
+
+    /* N:M */
+    public function authors()
+    {
+        return $this->belongsToMany('App\Product\Author');
     }
 
     /* N:M */
