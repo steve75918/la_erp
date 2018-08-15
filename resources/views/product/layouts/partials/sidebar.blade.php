@@ -26,6 +26,11 @@
                   作品類別管理
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('tags.index') }}">
+                  作品標籤管理
+                </a>
+              </li>
               {{-- <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="file"></span>
