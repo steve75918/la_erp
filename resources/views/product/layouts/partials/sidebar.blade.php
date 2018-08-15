@@ -16,6 +16,11 @@
                   作者管理
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('types.index') }}">
+                  作品類型管理
+                </a>
+              </li>
               {{-- <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="file"></span>
