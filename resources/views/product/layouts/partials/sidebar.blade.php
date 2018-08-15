@@ -18,7 +18,12 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('types.index') }}">
-                  作品類型管理
+                  作品種類管理
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('categories.index') }}">
+                  作品類別管理
                 </a>
               </li>
               {{-- <li class="nav-item">
