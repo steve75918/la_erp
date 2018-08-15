@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Product\Publisher;
 use App\Product\Brand;
 
-class BrandsController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.

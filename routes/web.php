@@ -20,10 +20,10 @@ Route::prefix('product')->group(function () {
         return view('product.index');
     });
 
-    Route::resource('publishers', 'Product\PublishersController');
-    Route::resource('brands', 'Product\BrandsController');
-    Route::resource('authors', 'Product\AuthorsController');
-    Route::resource('types', 'Product\TypesController');
+    Route::resource('publishers', 'Product\PublisherController');
+    Route::resource('brands', 'Product\BrandController');
+    Route::resource('authors', 'Product\AuthorController');
+    Route::resource('types', 'Product\TypeController');
     Route::resource('categories', 'Product\CategoryController');
     Route::resource('tags', 'Product\TagController');
 });

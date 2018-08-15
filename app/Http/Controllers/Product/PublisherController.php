@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product\Publisher;
 
-class PublishersController extends Controller
+class PublisherController extends Controller
 {
     /**
      * Display a listing of the resource.
