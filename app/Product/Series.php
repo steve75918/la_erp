@@ -40,4 +40,10 @@ class Series extends Model
     {
         return $this->belongsToMany('App\Product\Category');
     }
+
+    /* N:M */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Product\Tag');
+    }
 }
