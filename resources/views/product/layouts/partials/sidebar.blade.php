@@ -31,12 +31,11 @@
                   作品標籤管理
                 </a>
               </li>
-              {{-- <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  書籍管理
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('series.index') }}">
+                  Series 管理
                 </a>
-              </li> --}}
+              </li>
             </ul>
           </div>
         </nav>
