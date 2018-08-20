@@ -19,7 +19,7 @@ class CreateSeriesTagTable extends Migration
 
             // foreigh keys
             $table->foreign('series_id')->references('id')->on('series')->onDelete('cascade');
-            $table->foreign('tag_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
 
             // index
             $table->primary(['series_id', 'tag_id']);
