@@ -1,6 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
+use App\Product\Brand as Brand;
+use App\Product\Type as Type;
 
 $factory->define(App\Product\Series::class, function (Faker $faker) {
     $fakerTW = \Faker\Factory::create('zh_TW');
@@ -8,11 +10,16 @@ $factory->define(App\Product\Series::class, function (Faker $faker) {
 
     return [
         'series_id' => $faker->unique()->randomNumber(6),
-        'brand_id' => function () {
-            return factory(APP\Product\Brand::class)->create()->id;
-        },
         'name' => $fakerTW->name,
         'origin_name' => $fakerJP->name,
         'desc' => $fakerTW->text,
+        'is_adult_only' => $fakerTW->boolean,
+        'is_lunched' => $fakerTW->boolean,
+        'brand_id' => function () {
+            return Brand::all()->random(1)->first()->id;
+        },
+        'type_id' => function () {
+            return Type::all()->random(1)->first()->id;
+        },
     ];
 });

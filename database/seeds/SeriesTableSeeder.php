@@ -11,7 +11,7 @@ class SeriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $brands = factory(App\Product\Series::class, 20)
-                        ->create();
+        $series = factory(App\Product\Series::class, 20)
+                    ->create();
     }
 }
