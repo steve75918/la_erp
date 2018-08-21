@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUniqueToIndexTypesTable extends Migration
+class DropTypeSeriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUniqueToIndexTypesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('product')->table('types', function (Blueprint $table) {
-            $table->unique('code_name');
+        Schema::connection('product')->table('series', function (Blueprint $table) {
+            $table->dropColumn('type_id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddUniqueToIndexTypesTable extends Migration
      */
     public function down()
     {
-        Schema::connection('product')->table('types', function (Blueprint $table) {
-            $table->dropUnique('types_code_name_unique');
+        Schema::connection('product')->table('series', function (Blueprint $table) {
+            $table->unsignedInteger('type_id')->index();
         });
     }
 }

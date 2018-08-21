@@ -26,7 +26,7 @@ class AlterTypeSeriesTable extends Migration
     public function down()
     {
         Schema::connection('product')->table('series', function (Blueprint $table) {
-            $table->dropIndex(['type']);
+            $table->dropIndex(['type_id']);
             $table->string('type', 100)->change();
         });
     }
