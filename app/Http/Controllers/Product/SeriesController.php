@@ -15,7 +15,7 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series = Series::with(['brand', 'type'])->paginate(15);
+        $series = Series::with(['brand'])->paginate(15);
         $data = compact('series');
 
         return view('product.series.index', $data);

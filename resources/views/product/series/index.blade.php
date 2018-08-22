@@ -25,7 +25,6 @@
                   <th>作者</th>
                   <th>出版社</th>
                   <th>簡介</th>
-                  <th>種類</th>
                   <th>分類</th>
                   <th>標籤</th>
                   <th></th>
@@ -46,7 +45,6 @@
                     </td>
                     <td>{{ $oneseries->brand->name }}</td>
                     <td>{{ $oneseries->desc }}</td>
-                    <td>{{ $oneseries->type->name }}</td>
                     <td>
                       @foreach ($oneseries->categories as $key => $category)
                         @if ($key >= 1)

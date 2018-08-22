@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
 
         // book-meta
         $this->call(AuthorsTableSeeder::class);
-        $this->call(TypesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(TagsTableSeeder::class);
 

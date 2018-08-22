@@ -23,7 +23,6 @@ Route::prefix('product')->group(function () {
     Route::resource('publishers', 'Product\PublisherController');
     Route::resource('brands', 'Product\BrandController');
     Route::resource('authors', 'Product\AuthorController');
-    Route::resource('types', 'Product\TypeController');
     Route::resource('categories', 'Product\CategoryController');
     Route::resource('tags', 'Product\TagController');
     Route::resource('series', 'Product\SeriesController');
