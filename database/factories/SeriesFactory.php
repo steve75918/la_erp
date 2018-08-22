@@ -2,7 +2,6 @@
 
 use Faker\Generator as Faker;
 use App\Product\Brand as Brand;
-use App\Product\Type as Type;
 
 $factory->define(App\Product\Series::class, function (Faker $faker) {
     $fakerTW = \Faker\Factory::create('zh_TW');
@@ -17,9 +16,6 @@ $factory->define(App\Product\Series::class, function (Faker $faker) {
         'is_lunched' => $fakerTW->boolean,
         'brand_id' => function () {
             return Brand::all()->random(1)->first()->id;
-        },
-        'type_id' => function () {
-            return Type::all()->random(1)->first()->id;
-        },
+        }
     ];
 });
