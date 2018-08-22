@@ -14,9 +14,7 @@ class AlterCategoriesTable extends Migration
     public function up()
     {
         Schema::connection('product')->table('categories', function (Blueprint $table) {
-            $table->unsignedInteger('parent_id');
-            $table->tinyInteger('level');
-            $table->tinyInteger('order');
+            $table->nestedSet();
         });
     }
 
@@ -28,9 +26,7 @@ class AlterCategoriesTable extends Migration
     public function down()
     {
         Schema::connection('product')->table('categories', function (Blueprint $table) {
-            $table->dropColumn('parent_id');
-            $table->dropColumn('level');
-            $table->dropColumn('order');
+            $table->dropNestedSet();
         });
     }
 }
