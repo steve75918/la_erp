@@ -20,6 +20,7 @@
             <table class="table table-striped table-sm">
               <thead>
                 <tr>
+                  <th>Series ID</th>
                   <th>中文名稱</th>
                   <th>原文名稱</th>
                   <th>作者</th>
@@ -27,25 +28,23 @@
                   <th>簡介</th>
                   <th>分類</th>
                   <th>標籤</th>
+                  <th>18X</th>
+                  <th></th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($series as $oneSeries)
                   <tr>
+                    <td>{{ $oneSeries->series_id }}</td>
                     <td>{{ $oneSeries->name }}</td>
                     <td>{{ $oneSeries->origin_name }}</td>
-                    <td>
-                      {{ $oneSeries->authors->implode('name', '＼') }}
-                    </td>
+                    <td>{{ $oneSeries->authors->implode('name', '＼') }}</td>
                     <td>{{ $oneSeries->brand->name }}</td>
                     <td>{{ $oneSeries->desc }}</td>
-                    <td>
-                      {{ $oneSeries->categories->implode('name', '＼') }}
-                    </td>
-                    <td>
-                      {{ $oneSeries->tags->implode('name', '＼') }}
-                    </td>
+                    <td>{{ $oneSeries->categories->implode('name', '＼') }}</td>
+                    <td>{{ $oneSeries->tags->implode('name', '＼') }}</td>
+                    <td>{{ ($oneSeries->is_adult_only)? '是': '否' }}</td>
                     <td><a class="btn btn-primary btn-sm" href="{{ route('series.edit', $oneSeries->id) }}">修改</a></td>
                     <td>
                       <form action="{{ route('series.destroy', $oneSeries->id) }}" method="POST">
