@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(15);
+        $categories = Category::with('ancestors')->paginate(15);
         $data = compact('categories');
 
         return view('product.categories.index', $data);
@@ -65,8 +65,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        $data = compact('category');
+        $category = Category::with('ancestors')->find($id);
+        $nodes = Category::withDepth()->get()->toFlatTree();
+
+        $data = compact('category', 'nodes');
 
         return view('product.categories.edit', $data);
     }
@@ -83,6 +85,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         $category->name = $request->name;
+        $category->parent_id = $request->parent_id;
 
         $category->save();
 
