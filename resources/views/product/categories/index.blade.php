@@ -27,7 +27,10 @@
               <tbody>
                 @foreach ($categories as $category)
                   <tr>
-                    <td>{{ $category->name }}</td>
+                    <td>
+                      <small>{{ $category->ancestors->count() ? implode(' > ', $category->ancestors->pluck('name')->toArray()) : 'Top Level' }}</small><br>
+                      {{ $category->name }}
+                    </td>
                     <td><a class="btn btn-primary btn-sm" href="{{ route('categories.edit', $category->id) }}">修改</a></td>
                     <td>
                       <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
