@@ -75,8 +75,6 @@ class SeriesController extends Controller
         $series->categories()->sync($request->category_ids);
         $series->tags()->sync($request->tag_ids);
 
-        // $series->save();
-
         return redirect()->route('series.index');
     }
 
@@ -121,16 +119,17 @@ class SeriesController extends Controller
     {
         $series = Series::find($id);
 
-        $series->name        = $request->name;
-        $series->origin_name = $request->origin_name;
-        $series->brand_id    = $request->brand_id;
-        $series->desc        = $request->desc;
+        $series->series_id     = $request->series_id;
+        $series->name          = $request->name;
+        $series->origin_name   = $request->origin_name;
+        $series->brand_id      = $request->brand_id;
+        $series->desc          = $request->desc;
+        $series->is_adult_only = $request->is_adult_only;
+        $series->save();
 
         $series->authors()->sync($request->author_ids);
         $series->categories()->sync($request->category_ids);
         $series->tags()->sync($request->tag_ids);
-
-        $series->save();
 
         return redirect()->route('series.index');
     }

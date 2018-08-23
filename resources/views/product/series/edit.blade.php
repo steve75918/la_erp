@@ -9,6 +9,11 @@
 @section('content')
           <form method="POST" action="{{ route('series.update', $series->id) }}">
             <div class="form-group">
+              <label for="series_id">Series ID</label>
+              <input type="text" class="form-control" name="series_id" id="series_id" value="{{ $series->series_id }}">
+            </div>
+
+            <div class="form-group">
               <label for="name">中文名稱</label>
               <input type="text" class="form-control" name="name" id="name" value="{{ $series->name }}">
             </div>
@@ -59,8 +64,22 @@
             </div>
             @endforeach
 
+            <div class="form-group">是否為 18 禁</div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="inlineRadio1" name="is_adult_only" value="0" {{ ($series->is_adult_only === 0)? 'checked': ''}}>
+              <label class="form-check-label" for="inlineRadio1">否</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="inlineRadio2" name="is_adult_only" value="1" {{ ($series->is_adult_only === 1)? 'checked': ''}}>
+              <label class="form-check-label" for="inlineRadio2">是</label>
+            </div>
+
             {{ csrf_field() }}
             {{ method_field('PUT') }}
-            <button class="btn btn-primary" type="submit">送出</button>
+
+            <div class="form-group">
+              <button class="btn btn-primary" type="submit">送出</button>
+            </div>
+
           </form>
 @endsection
