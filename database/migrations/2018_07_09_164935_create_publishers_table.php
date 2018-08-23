@@ -16,7 +16,7 @@ class CreatePublishersTable extends Migration
         Schema::connection('product')->create('publishers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);
-            $table->string('origin_name', 255);
+            $table->string('origin_name', 255)->nullable();
             $table->timestamps();
         });
     }

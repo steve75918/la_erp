@@ -17,7 +17,7 @@ class CreateBrandsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('publisher_id')->index();
             $table->string('name', 255);
-            $table->string('origin_name', 255);
+            $table->string('origin_name', 255)->nullable();
             $table->timestamps();
         });
     }

@@ -19,13 +19,12 @@ class CreateSeriesTable extends Migration
             $table->unsignedInteger('author_id')->index();
             $table->unsignedInteger('brand_id')->index();
             $table->string('name', 255);
-            $table->string('origin_name', 255);
+            $table->string('origin_name', 255)->nullable();
             $table->text('desc');
             $table->string('type', 100);
             $table->string('categories', 255);
             $table->string('tags', 255);
             $table->boolean('is_adult_only');
-            $table->boolean('is_lunched');
             $table->timestamps();
         });
     }
