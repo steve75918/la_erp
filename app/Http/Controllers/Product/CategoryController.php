@@ -28,7 +28,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('product.categories.create');
+        $nodes = Category::withDepth()->get()->toFlatTree();
+
+        $data = compact('category', 'nodes');
+
+        return view('product.categories.create', $data);
     }
 
     /**
@@ -40,7 +44,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $publisher = Category::updateOrCreate(
-            ['name' => $request->name]
+            ['name' => $request->name],
+            ['parent_id' => $request->parent_id]
         );
 
         return redirect()->route('categories.index');
