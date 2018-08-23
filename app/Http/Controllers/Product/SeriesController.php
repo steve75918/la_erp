@@ -9,6 +9,7 @@ use App\product\Series;
 use App\product\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class SeriesController extends Controller
 {
@@ -32,7 +33,14 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        //
+        $authors    = Author::get();
+        $brands     = Brand::get();
+        $categories = Category::withDepth()->get()->toFlatTree();
+        $tags       = Tag::get();
+
+        $data = compact('brands', 'authors', 'categories', 'tags');
+
+        return view('product.series.create', $data);
     }
 
     /**
@@ -43,7 +51,33 @@ class SeriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // series_id could be modified later
+        if (empty($request->series_id)) {
+            $now = Carbon::now()->timestamp;
+            $d = 1000000;
+            $request->series_id = (999 * $d) + ($now % $d);
+        }
+
+        $series = Series::updateOrCreate(
+            [
+                'series_id' => $request->series_id
+            ],
+            [
+                'name'          => $request->name,
+                'origin_name'   => $request->origin_name,
+                'brand_id'      => $request->brand_id,
+                'desc'          => $request->desc,
+                'is_adult_only' => $request->is_adult_only,
+            ]
+        );
+
+        $series->authors()->sync($request->author_ids);
+        $series->categories()->sync($request->category_ids);
+        $series->tags()->sync($request->tag_ids);
+
+        // $series->save();
+
+        return redirect()->route('series.index');
     }
 
     /**
@@ -87,10 +121,10 @@ class SeriesController extends Controller
     {
         $series = Series::find($id);
 
-        $series->name = $request->name;
+        $series->name        = $request->name;
         $series->origin_name = $request->origin_name;
-        $series->brand_id = $request->brand_id;
-        $series->desc = $request->desc;
+        $series->brand_id    = $request->brand_id;
+        $series->desc        = $request->desc;
 
         $series->authors()->sync($request->author_ids);
         $series->categories()->sync($request->category_ids);
