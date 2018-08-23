@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\product;
 
+use App\product\Author;
+use App\product\Brand;
+use App\product\Category;
 use App\product\Series;
+use App\product\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +19,7 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series = Series::with(['brand'])->paginate(15);
+        $series = Series::with(['brand', 'authors', 'categories', 'tags'])->paginate(15);
         $data = compact('series');
 
         return view('product.series.index', $data);
@@ -48,7 +52,7 @@ class SeriesController extends Controller
      * @param  \App\product\Series  $series
      * @return \Illuminate\Http\Response
      */
-    public function show(Series $series)
+    public function show($id)
     {
         //
     }
@@ -59,9 +63,17 @@ class SeriesController extends Controller
      * @param  \App\product\Series  $series
      * @return \Illuminate\Http\Response
      */
-    public function edit(Series $series)
+    public function edit($id)
     {
-        //
+        $authors    = Author::get();
+        $brands     = Brand::get();
+        $categories = Category::withDepth()->get()->toFlatTree();
+        $series     = Series::find($id);
+        $tags       = Tag::get();
+
+        $data = compact('series', 'brands', 'authors', 'categories', 'tags');
+
+        return view('product.series.edit', $data);
     }
 
     /**
@@ -71,9 +83,22 @@ class SeriesController extends Controller
      * @param  \App\product\Series  $series
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Series $series)
+    public function update(Request $request, $id)
     {
-        //
+        $series = Series::find($id);
+
+        $series->name = $request->name;
+        $series->origin_name = $request->origin_name;
+        $series->brand_id = $request->brand_id;
+        $series->desc = $request->desc;
+
+        $series->authors()->sync($request->author_ids);
+        $series->categories()->sync($request->category_ids);
+        $series->tags()->sync($request->tag_ids);
+
+        $series->save();
+
+        return redirect()->route('series.index');
     }
 
     /**
@@ -82,7 +107,7 @@ class SeriesController extends Controller
      * @param  \App\product\Series  $series
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Series $series)
+    public function destroy($id)
     {
         //
     }

@@ -31,39 +31,24 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($series as $oneseries)
+                @foreach ($series as $oneSeries)
                   <tr>
-                    <td>{{ $oneseries->name }}</td>
-                    <td>{{ $oneseries->origin_name }}</td>
+                    <td>{{ $oneSeries->name }}</td>
+                    <td>{{ $oneSeries->origin_name }}</td>
                     <td>
-                      @foreach ($oneseries->authors as $key => $author)
-                        @if ($key >= 1)
-                          ＼
-                        @endif
-                        {{ $author->name }}
-                      @endforeach
+                      {{ $oneSeries->authors->implode('name', '＼') }}
                     </td>
-                    <td>{{ $oneseries->brand->name }}</td>
-                    <td>{{ $oneseries->desc }}</td>
+                    <td>{{ $oneSeries->brand->name }}</td>
+                    <td>{{ $oneSeries->desc }}</td>
                     <td>
-                      @foreach ($oneseries->categories as $key => $category)
-                        @if ($key >= 1)
-                          ＼
-                        @endif
-                        {{ $category->name }}
-                      @endforeach
+                      {{ $oneSeries->categories->implode('name', '＼') }}
                     </td>
                     <td>
-                      @foreach ($oneseries->tags as $key => $tag)
-                        @if ($key >= 1)
-                          ＼
-                        @endif
-                        {{ $tag->name }}
-                      @endforeach
+                      {{ $oneSeries->tags->implode('name', '＼') }}
                     </td>
-                    <td><a class="btn btn-primary btn-sm" href="{{ route('series.edit', $oneseries->id) }}">修改</a></td>
+                    <td><a class="btn btn-primary btn-sm" href="{{ route('series.edit', $oneSeries->id) }}">修改</a></td>
                     <td>
-                      <form action="{{ route('series.destroy', $oneseries->id) }}" method="POST">
+                      <form action="{{ route('series.destroy', $oneSeries->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button class="btn btn-danger btn-sm" type="submit">刪除</button>
