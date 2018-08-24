@@ -13,9 +13,9 @@ class Series extends Model
     protected $guarded = [];
 
     /* 1:N */
-    public function titles()
+    public function books()
     {
-        return $this->hasMany('App\Product\Title');
+        return $this->hasMany('App\Product\Book');
     }
 
     /* N:1 */
