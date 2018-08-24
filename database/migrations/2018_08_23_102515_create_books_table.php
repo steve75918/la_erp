@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTitlesTable extends Migration
+class CreateBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateTitlesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('product')->create('titles', function (Blueprint $table) {
+        Schema::connection('product')->create('books', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('title_id')->unique();
+            $table->unsignedInteger('book_id')->unique();
             $table->unsignedInteger('series_id')->index();
             $table->string('name', 255);
-            $table->string('origin_name', 255);
+            $table->string('origin_name', 255)->nullable();
             $table->text('desc');
             $table->integer('cost_48hr');
             $table->integer('cost_limitless');
-            $table->boolean('is_lunched');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -34,6 +34,6 @@ class CreateTitlesTable extends Migration
      */
     public function down()
     {
-        Schema::connection('product')->dropIfExists('titles');
+        Schema::connection('product')->dropIfExists('books');
     }
 }
