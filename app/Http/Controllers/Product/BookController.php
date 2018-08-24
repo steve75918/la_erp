@@ -6,6 +6,7 @@ use App\product\Series;
 use App\Product\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class BookController extends Controller
 {
@@ -29,7 +30,11 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $series = Series::get();
+
+        $data = compact('series');
+
+        return view('product.books.create', $data);
     }
 
     /**
@@ -40,7 +45,28 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // book_id could be modified later
+        if (empty($request->book_id)) {
+            $now = Carbon::now()->timestamp;
+            $d = 1000000;
+            $request->book_id = (999 * $d) + ($now % $d);
+        }
+
+        $book = Book::updateOrCreate(
+            [
+                'book_id' => $request->book_id
+            ],
+            [
+                'name'           => $request->name,
+                'origin_name'    => $request->origin_name,
+                'series_id'      => $request->series_id,
+                'desc'           => $request->desc,
+                'cost_48hr'      => $request->cost_48hr,
+                'cost_limitless' => $request->cost_limitless,
+            ]
+        );
+
+        return redirect()->route('books.index');
     }
 
     /**

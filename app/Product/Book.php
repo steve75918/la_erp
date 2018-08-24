@@ -10,6 +10,7 @@ class Book extends Model
     use SoftDeletes;
 
     protected $connection = 'product';
+    protected $guarded = [];
 
     /* N:1 */
     public function series()
