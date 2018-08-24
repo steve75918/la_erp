@@ -26,4 +26,5 @@ Route::prefix('product')->group(function () {
     Route::resource('categories', 'Product\CategoryController');
     Route::resource('tags', 'Product\TagController');
     Route::resource('series', 'Product\SeriesController');
+    Route::resource('books', 'Product\BookController');
 });
