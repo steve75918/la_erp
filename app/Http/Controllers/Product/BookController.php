@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Product;
 
+use App\product\Series;
 use App\Product\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -48,7 +49,7 @@ class BookController extends Controller
      * @param  \App\Product\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show($id)
     {
         //
     }
@@ -59,9 +60,14 @@ class BookController extends Controller
      * @param  \App\Product\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit($id)
     {
-        //
+        $book   = Book::with(['series'])->find($id);
+        $series = Series::get();
+
+        $data = compact('book', 'series');
+
+        return view('product.books.edit', $data);
     }
 
     /**
@@ -71,9 +77,20 @@ class BookController extends Controller
      * @param  \App\Product\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, $id)
     {
-        //
+        $book = Book::find($id);
+
+        $book->series_id      = $request->series_id;
+        $book->book_id        = $request->book_id;
+        $book->name           = $request->name;
+        $book->origin_name    = $request->origin_name;
+        $book->desc           = $request->desc;
+        $book->cost_48hr      = $request->cost_48hr;
+        $book->cost_limitless = $request->cost_limitless;
+        $book->save();
+
+        return redirect()->route('books.index');
     }
 
     /**
@@ -82,7 +99,7 @@ class BookController extends Controller
      * @param  \App\Product\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
         //
     }
